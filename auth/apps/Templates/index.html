@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'index.css' %}" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   {% block title %}
+<title> homepage</title>
+   {% endblock %}
+</head>
+<body>
+
+{% block content%}
+{% if user.is_authenticated %}
+    
+homepage
+ <div><a href="{% url 'logout' %}"> Logout</a></div>
+
+{% else %}
+<div class="container" > 
+    <button class="but1"><a href="{% url 'login' %}"> Login</a></button>
+   
+    <button class="but2"><a href="{% url 'register' %}"> Register</a></button>
+   </div>
+    {% endif %}
+    
+<br>
+
+
+ <style>
+body{
+    background:green;
+    padding:0;
+    margin:0;
+
+}
+.but1, .but2{
+    background: blue;
+    color:antiquewhite;
+    padding: 10px;
+    margin: 30px;
+    
+}
+.but1 a, .but2 a{
+    color:antiquewhite;
+    text-decoration: none;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.container{
+    position:absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    
+}
+ </style>
+ 
+ {% endblock %}
+</body>
+</html>
